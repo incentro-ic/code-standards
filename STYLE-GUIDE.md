@@ -54,7 +54,24 @@ function readPackageJson() {
 
 ### 🧬 Interfaces, types & enums
 
-We don't use interfaces, we use types. Types can do everything interfaces can and more.
+We use types instead of interfaces. Interfaces only describe object shapes, while types also cover unions, tuples, mapped types and conditional types, so using types everywhere leaves one way to declare a type. Types also can't be merged by accident: declaring the same interface twice silently merges both declarations, while declaring the same type twice is an error. And a type describing an object is assignable to `Record<string, unknown>`, an interface isn't. The ESLint config enforces this with `@typescript-eslint/consistent-type-definitions`.
+
+There are two exceptions where an interface is the better choice:
+
+- **Module augmentation.** Extending a type declared by a library (like `Window`, or React Router's `Register`) relies on declaration merging, which only interfaces support.
+- **Large hierarchies of object types.** When an object type is built by extending several others, prefer `interface … extends` over intersections (`&`). `extends` reports conflicting properties as an error, while an intersection silently turns them into `never`. Typescript also caches `extends` relationships, which keeps type checking fast in large codebases.
+
+In both cases, [diverge from the linting rule](#-diverging-from-linting-rules) for that declaration only:
+
+```typescript
+declare module "react-router" {
+  // REASON: Module augmentation requires an interface.
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+  interface Register {
+    params: Params;
+  }
+}
+```
 
 Types and enums use `PascalCase`. Type properties should be `camelCase` and enum keys should be `UPPER_CASE`. Enum values should be `UPPER_CASE`.
 

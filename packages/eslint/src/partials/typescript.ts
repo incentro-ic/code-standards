@@ -63,6 +63,13 @@ export const typescriptConfigs: Linter.Config[] = [
         },
       ],
 
+      // The stylistic preset prefers interfaces, but our style guide prefers
+      // types: they also cover unions, tuples, mapped and conditional types,
+      // can't be merged by accident and are assignable to
+      // `Record<string, unknown>`. Module augmentation and large `extends`
+      // hierarchies are valid reasons to disable this rule for one line.
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+
       // When using Typedoc, interfaces are preferred over types because they
       // are read and documented natively by Typedoc. Type aliases require the
       // `@interface` comment
