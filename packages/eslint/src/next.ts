@@ -10,6 +10,11 @@ export const NEXT_ABBREVIATION_REPLACEMENTS = {
   params: false,
 };
 
+// Matches a folder path that ends in a dynamic route segment, such as
+// `src/app/[slug]`, `src/app/[...slug]` or `src/app/[[...slug]]`.
+const PATH_ENDING_IN_DYNAMIC_SEGMENT =
+  /(?:^|\/)\[{1,2}(?:\.{3})?[^/\]]+\]{1,2}$/u;
+
 const config: Linter.Config[] = [
   ...baseConfigs,
 
@@ -36,18 +41,18 @@ const config: Linter.Config[] = [
 
   {
     name: "incentro-ic/next/dynamic-segments",
-    files: ["src/app/**/*.{ts,tsx}"],
+    files: ["src/app/**/*.{js,jsx,ts,tsx}"],
     rules: {
-      // Dynamic route segments like `[slug]` or `[[...mdxPath]]` are named
-      // after the route parameter they expose in `params`, so they follow the
-      // variable naming convention instead of kebab case. Marking them as
-      // directory roots skips the folder names up to and including the
-      // segment, while file names and the folders below it are still checked.
+      // Dynamic route segments are named after the route parameter they
+      // expose in `params`, so they follow the variable naming convention
+      // instead of kebab case. As directory roots, they and the folders above
+      // them are skipped, so a static folder that only contains dynamic
+      // folders isn't checked. File names and folders below them still are.
       "unicorn/filename-case": [
         "error",
         {
           case: "kebabCase",
-          directoryRoots: [/(?:^|\/)\[{1,2}(?:\.{3})?[^/\]]+\]{1,2}$/u],
+          directoryRoots: [PATH_ENDING_IN_DYNAMIC_SEGMENT],
         },
       ],
     },
