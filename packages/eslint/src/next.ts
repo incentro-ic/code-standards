@@ -40,10 +40,15 @@ const config: Linter.Config[] = [
     rules: {
       // Dynamic route segments like `[slug]` or `[[...mdxPath]]` are named
       // after the route parameter they expose in `params`, so they follow the
-      // variable naming convention instead of kebab case.
+      // variable naming convention instead of kebab case. Marking them as
+      // directory roots skips the folder names up to and including the
+      // segment, while file names and the folders below it are still checked.
       "unicorn/filename-case": [
         "error",
-        { case: "kebabCase", ignore: [/^\[{1,2}(?:\.{3})?[^\]]+\]{1,2}$/u] },
+        {
+          case: "kebabCase",
+          directoryRoots: [/(?:^|\/)\[{1,2}(?:\.{3})?[^/\]]+\]{1,2}$/u],
+        },
       ],
     },
   },

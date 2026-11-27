@@ -1,5 +1,5 @@
 ---
-"@incentro-ic/config-prettier": patch
+"@incentro-ic/config-prettier": major
 ---
 
-Update `sort-package-json` to v4, which requires Node.js 22 or later.
+Update `sort-package-json` to v4. The minimum Node.js version goes from 20 to 22.
