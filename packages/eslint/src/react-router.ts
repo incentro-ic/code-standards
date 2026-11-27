@@ -9,6 +9,12 @@ export const REACT_ROUTER_ABBREVIATION_REPLACEMENTS = {
   params: false,
 };
 
+// Matches a route folder in `src/routes` whose name uses React Router's file
+// route syntax: `.` separators, `$` parameters, `(…)` optional segments,
+// `[…]` escapes, or a leading or trailing `_`.
+const PATH_ENDING_IN_ROUTE_FOLDER =
+  /(?:^|\/)src\/routes\/(?:[^/]*[$.()[\]][^/]*|_[^/]*|[^/]*_)$/u;
+
 const config: Linter.Config[] = [
   ...baseConfigs,
 
@@ -36,6 +42,24 @@ const config: Linter.Config[] = [
       // Throwing Response and Redirect objects in loaders and actions is a
       // common pattern in React Router.
       "@typescript-eslint/only-throw-error": "off",
+    },
+  },
+
+  {
+    name: "incentro-ic/react-router/route-folders",
+    files: ["src/routes/**/*.{js,jsx,ts,tsx}"],
+    rules: {
+      // Route folders such as `users.$userId` follow React Router's naming
+      // conventions instead of kebab case. Marking them as directory roots
+      // skips their names, while file names and folders below them are still
+      // checked.
+      "unicorn/filename-case": [
+        "error",
+        {
+          case: "kebabCase",
+          directoryRoots: [PATH_ENDING_IN_ROUTE_FOLDER],
+        },
+      ],
     },
   },
 

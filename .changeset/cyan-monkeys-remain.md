@@ -47,3 +47,4 @@ Other changes:
 
 - ESLint 10 adds `no-unassigned-vars`, `no-useless-assignment` and `preserve-caught-error` to its recommended rules, and `typescript-eslint` adds three rules to its strict set.
 - The Next.js config accepts dynamic route folders such as `[productId]` in `src/app`. File names inside those folders are still checked.
+- The React Router config accepts route folders that use React Router's file route syntax in `src/routes`, such as `users.$userId`, `concerts_.mine` or `($lang)._index`. File names inside those folders are still checked.
