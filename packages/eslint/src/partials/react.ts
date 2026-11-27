@@ -44,7 +44,7 @@ export const reactConfigs: Linter.Config[] = [
       // depth.
       "react/jsx-max-depth": ["warn", { max: 6 }],
 
-      "unicorn/prevent-abbreviations": [
+      "unicorn/name-replacements": [
         "error",
         { replacements: REACT_ABBREVIATION_REPLACEMENTS },
       ],

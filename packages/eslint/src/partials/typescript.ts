@@ -1,4 +1,6 @@
 import type { Linter } from "eslint";
+import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
+import { createNodeResolver } from "eslint-plugin-import-x";
 import tseslint from "typescript-eslint";
 import { JAVASCRIPT_FILES_GLOB } from "../globs.js";
 
@@ -11,10 +13,10 @@ export const typescriptConfigs: Linter.Config[] = [
     name: "incentro-ic/typescript",
     files: JAVASCRIPT_FILES_GLOB,
     settings: {
-      "import/resolver": {
-        typescript: true,
-        node: true,
-      },
+      "import-x/resolver-next": [
+        createTypeScriptImportResolver(),
+        createNodeResolver(),
+      ],
     },
     languageOptions: {
       ecmaVersion: "latest",

@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import imports from "eslint-plugin-import";
+import imports from "eslint-plugin-import-x";
 import { JAVASCRIPT_FILES_GLOB } from "../globs.js";
 
 export const importsConfigs: Linter.Config[] = [
@@ -10,14 +10,14 @@ export const importsConfigs: Linter.Config[] = [
     files: JAVASCRIPT_FILES_GLOB,
     rules: {
       // Prefer named exports.
-      "import/prefer-default-export": "off",
-      "import/no-default-export": "error",
+      "import-x/prefer-default-export": "off",
+      "import-x/no-default-export": "error",
 
       // Warn when importing `devDependencies` in production code.
-      "import/no-extraneous-dependencies": "error",
+      "import-x/no-extraneous-dependencies": "error",
 
       // Prevent exporting `var` or `let` variables.
-      "import/no-mutable-exports": "error",
+      "import-x/no-mutable-exports": "error",
     },
   },
 ];

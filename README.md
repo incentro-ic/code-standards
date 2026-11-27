@@ -1,7 +1,7 @@
 <div align="center">
   <h1 align="center">Incentro IC - Code Standards</h1>
   <strong><a href="https://standards.incentro.dev">Read the docs</a></strong>
-  
+
   <br />
   <br />
 

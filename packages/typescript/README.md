@@ -35,7 +35,11 @@ Here's an example:
 
 > [!NOTE]
 >
-> The configuration files do not include any [`includes`](https://www.typescriptlang.org/tsconfig#include), [`files`](https://www.typescriptlang.org/tsconfig#files), [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) or [`compilerOptions.outDir`](https://www.typescriptlang.org/tsconfig#outDir) options. You will need to add these options according to your project's requirements.
+> The configuration files do not include any [`includes`](https://www.typescriptlang.org/tsconfig#include), [`files`](https://www.typescriptlang.org/tsconfig#files), [`exclude`](https://www.typescriptlang.org/tsconfig#exclude), [`compilerOptions.rootDir`](https://www.typescriptlang.org/tsconfig#rootDir) or [`compilerOptions.outDir`](https://www.typescriptlang.org/tsconfig#outDir) options. You will need to add these options according to your project's requirements. Since Typescript 6, `rootDir` defaults to the directory containing the `tsconfig.json`, so set it (for example to `src`) when Typescript emits files.
+>
+> Since Typescript 6, [`compilerOptions.types`](https://www.typescriptlang.org/tsconfig#types) defaults to an empty list, so `@types/*` packages are no longer included automatically. The NestJS, React Router and Node package configs set it for you. For the other configs, add the types you need, for example `"types": ["node"]`.
+>
+> Since Typescript 6, [`compilerOptions.noUncheckedSideEffectImports`](https://www.typescriptlang.org/tsconfig#noUncheckedSideEffectImports) is on by default, so side-effect imports such as `import "./globals.css"` need a type declaration. Next.js 16.4 and later declare CSS imports for you. Otherwise, add `declare module "*.css";` to a declaration file in your project.
 
 ## ⚙️ Configs
 

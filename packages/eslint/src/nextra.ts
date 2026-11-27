@@ -9,7 +9,7 @@ const config: Linter.Config[] = [
     files: ["src/content/**/_meta.{ts,tsx}"],
     rules: {
       // Nextra requires default exports for page files.
-      "import/no-default-export": "off",
+      "import-x/no-default-export": "off",
     },
   },
 ];

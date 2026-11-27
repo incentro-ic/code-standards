@@ -144,6 +144,7 @@ Some notable rules:
 
 - We force the use of [type-only imports](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export).
 - We allow a maximum of 10 imports per file, forcing modules to stay small. There's an exception for barrel files (`index.ts`).
+- Documentation comments (`/** */`) don't start their lines with `*`. Put `/**` and `*/` on their own lines and the text between them, without a prefix. `eslint --fix` rewrites existing comments.
 
 ## ⚛️ React
 
@@ -196,7 +197,7 @@ If you have to diverge from linting rules, **disable the rule for one line only*
 
 ```ts
 // REASON: ESLint uses default exports for its config.
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import-x/no-default-export
 export default config;
 ```
 

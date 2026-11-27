@@ -6,7 +6,7 @@ Shared [ESLint](https://eslint.org/) configuration for linting files. It enforce
 
 - [`typescript-eslint`](https://typescript-eslint.io/) - Typescript support for ESLint
 - [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn) - A set of useful (and very strict) ESLint rules.
-- [`eslint-plugin-import`](https://github.com/import-js/eslint-plugin-import) - Checks around `import` / `export` statements.
+- [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x) - Checks around `import` / `export` statements.
 - [`eslint-plugin-react`](https://github.com/jsx-eslint/eslint-plugin-react) - Checks around React components.
 - [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) - Checks around React hooks.
 - [`eslint-plugin-jsx-a11y`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) - Accessibility checks for JSX elements.
