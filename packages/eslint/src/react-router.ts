@@ -21,9 +21,9 @@ const config: Linter.Config[] = [
     ],
     rules: {
       // React Router requires default exports for a number of files.
-      "import/no-default-export": "off",
+      "import-x/no-default-export": "off",
 
-      "unicorn/prevent-abbreviations": [
+      "unicorn/name-replacements": [
         "error",
         {
           replacements: {

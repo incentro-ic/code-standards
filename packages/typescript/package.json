@@ -31,11 +31,11 @@
     "lint:prettier": "prettier --check . --cache"
   },
   "dependencies": {
-    "@tsconfig/strictest": "^2.0.8",
+    "@tsconfig/strictest": "^2.0.9",
     "@types/node": "^24.10.9"
   },
   "devDependencies": {
-    "prettier": "^3.8.1",
+    "prettier": "^3.10.1",
     "rimraf": "^6.1.2"
   },
   "peerDependencies": {

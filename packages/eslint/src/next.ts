@@ -20,9 +20,9 @@ const config: Linter.Config[] = [
     files: ["src/app/**/{layout,page}.{ts,tsx}"],
     rules: {
       // Next.js requires default exports for page files.
-      "import/no-default-export": "off",
+      "import-x/no-default-export": "off",
 
-      "unicorn/prevent-abbreviations": [
+      "unicorn/name-replacements": [
         "error",
         {
           replacements: {
@@ -30,6 +30,20 @@ const config: Linter.Config[] = [
             ...NEXT_ABBREVIATION_REPLACEMENTS,
           },
         },
+      ],
+    },
+  },
+
+  {
+    name: "incentro-ic/next/dynamic-segments",
+    files: ["src/app/**/*.{ts,tsx}"],
+    rules: {
+      // Dynamic route segments like `[slug]` or `[[...mdxPath]]` are named
+      // after the route parameter they expose in `params`, so they follow the
+      // variable naming convention instead of kebab case.
+      "unicorn/filename-case": [
+        "error",
+        { case: "kebabCase", ignore: [/^\[{1,2}(?:\.{3})?[^\]]+\]{1,2}$/u] },
       ],
     },
   },

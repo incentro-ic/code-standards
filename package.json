@@ -38,7 +38,7 @@
     "@incentro-ic/config-prettier": "workspace:*",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "env-cmd": "^11.0.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.10.1",
     "rimraf": "^6.1.2",
     "turbo": "^2.8.0"
   },
